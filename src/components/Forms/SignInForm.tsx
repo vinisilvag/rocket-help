@@ -1,6 +1,5 @@
 import React from 'react';
-import { Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
-import { VStack, Icon, useTheme, KeyboardAvoidingView } from 'native-base';
+import { VStack, Icon, useTheme } from 'native-base';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -50,43 +49,34 @@ export const SignInForm: React.FC = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={{ flex: 1 }}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <VStack w="full">
-          <Input
-            control={control}
-            inputName="email"
-            placeholder="E-mail"
-            autoCorrect={false}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            InputLeftElement={
-              <Icon as={<Envelope color={colors.gray[300]} />} ml={4} />
-            }
-          />
-          <Input
-            control={control}
-            inputName="password"
-            placeholder="Senha"
-            autoCapitalize="none"
-            secureTextEntry
-            InputLeftElement={
-              <Icon as={<Key color={colors.gray[300]} />} ml={4} />
-            }
-          />
+    <VStack w="full">
+      <Input
+        control={control}
+        inputName="email"
+        placeholder="E-mail"
+        autoCorrect={false}
+        autoCapitalize="none"
+        keyboardType="email-address"
+        InputLeftElement={
+          <Icon as={<Envelope color={colors.gray[300]} />} ml={4} />
+        }
+      />
+      <Input
+        control={control}
+        inputName="password"
+        placeholder="Senha"
+        autoCapitalize="none"
+        secureTextEntry
+        InputLeftElement={<Icon as={<Key color={colors.gray[300]} />} ml={4} />}
+      />
 
-          <Button
-            title="Entrar"
-            w="full"
-            mt={2}
-            onPress={handleSubmit(handleSignIn)}
-            isLoading={isSubmitting}
-          />
-        </VStack>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+      <Button
+        title="Entrar"
+        w="full"
+        mt={2}
+        onPress={handleSubmit(handleSignIn)}
+        isLoading={isSubmitting}
+      />
+    </VStack>
   );
 };

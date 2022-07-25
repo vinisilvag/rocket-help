@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { createContext, useState, useEffect, useMemo } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import Toast from 'react-native-toast-message';
@@ -67,19 +67,16 @@ export const AuthProvider: React.FC = ({ children }) => {
     await auth().signOut();
   };
 
-  const memoizedValue = useMemo(
-    () => ({
-      user,
-      isAuthenticated,
-      isLoadingUser,
-      signIn,
-      signOut,
-    }),
-    [user],
-  );
-
   return (
-    <AuthContext.Provider value={memoizedValue}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated,
+        isLoadingUser,
+        signIn,
+        signOut,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
