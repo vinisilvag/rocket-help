@@ -21,6 +21,7 @@ export const Input: React.FC<InputProps> = ({
   inputName,
   control,
   secureTextEntry,
+  flex,
   ...rest
 }) => {
   const { colors } = useTheme();
@@ -34,7 +35,7 @@ export const Input: React.FC<InputProps> = ({
         field: { onChange, onBlur, value },
         fieldState: { error },
       }) => (
-        <VStack w="full">
+        <VStack w="full" flex={flex}>
           <NativeBaseInput
             bg="gray.700"
             h={14}
@@ -48,6 +49,7 @@ export const Input: React.FC<InputProps> = ({
             selectionColor="green.500"
             isInvalid={!!error}
             mb={4}
+            flex={flex}
             _focus={{
               borderColor: 'green.500',
               bg: 'gray.700',
@@ -64,11 +66,12 @@ export const Input: React.FC<InputProps> = ({
                 <IconButton
                   icon={
                     isShowingSecureTextEntry ? (
-                      <EyeSlash size={14} color={colors.gray[300]} />
+                      <EyeSlash size={24} color={colors.gray[300]} />
                     ) : (
-                      <Eye size={14} color={colors.gray[300]} />
+                      <Eye size={24} color={colors.gray[300]} />
                     )
                   }
+                  mr={1.5}
                   _pressed={{ bg: 'gray.500' }}
                   onPress={() =>
                     setIsShowingSecureTextEntry(!isShowingSecureTextEntry)
@@ -76,6 +79,7 @@ export const Input: React.FC<InputProps> = ({
                 />
               )
             }
+            secureTextEntry={!!(secureTextEntry && !isShowingSecureTextEntry)}
             {...rest}
           />
 

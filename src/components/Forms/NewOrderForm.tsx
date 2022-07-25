@@ -32,7 +32,7 @@ export const NewOrderForm: React.FC = () => {
   };
 
   return (
-    <VStack flex={1} w="full">
+    <VStack flex={1} w="full" mt={4} pb={6}>
       <Input
         control={control}
         inputName="patrimony"
