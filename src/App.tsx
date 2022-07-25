@@ -12,11 +12,11 @@ import {
 
 import Toast from 'react-native-toast-message';
 
-import { customTheme } from './styles/theme';
+import { Routes } from '@routes/index';
+import { customTheme } from '@styles/theme';
 
-import { Routes } from './routes';
-import { Loading } from './components/Loading';
-import { AuthProvider } from './contexts/auth';
+import { Loading } from '@components/Loading';
+import { AuthProvider } from '@contexts/auth';
 
 export const App: React.FC = () => {
   const [fontsLoaded] = useFonts({

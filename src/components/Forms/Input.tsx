@@ -62,7 +62,7 @@ export const Input: React.FC<InputProps> = ({
             onChangeText={onChange}
             value={value}
             InputRightElement={
-              secureTextEntry && (
+              secureTextEntry ? (
                 <IconButton
                   icon={
                     isShowingSecureTextEntry ? (
@@ -77,7 +77,7 @@ export const Input: React.FC<InputProps> = ({
                     setIsShowingSecureTextEntry(!isShowingSecureTextEntry)
                   }
                 />
-              )
+              ) : undefined
             }
             secureTextEntry={!!(secureTextEntry && !isShowingSecureTextEntry)}
             {...rest}

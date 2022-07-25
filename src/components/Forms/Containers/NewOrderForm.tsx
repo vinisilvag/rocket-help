@@ -5,8 +5,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { Input } from '../Input';
-import { Button } from '../Button';
+import { Input } from '@components/Forms/Input';
+import { Button } from '@components/Forms/Button';
 
 type NewOrderFormData = {
   patrimony: string;
@@ -32,7 +32,7 @@ export const NewOrderForm: React.FC = () => {
   };
 
   return (
-    <VStack flex={1} w="full" mt={4} pb={6}>
+    <VStack flex={1} w="full" mt={2} pb={6}>
       <Input
         control={control}
         inputName="patrimony"

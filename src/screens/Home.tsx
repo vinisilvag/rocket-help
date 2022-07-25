@@ -12,10 +12,11 @@ import {
 import { ChatTeardropText } from 'phosphor-react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { HomeHeader } from '../components/Headers/Home';
-import { Filter } from '../components/Filter';
-import { Button } from '../components/Button';
-import { Order, OrderProps } from '../components/Order';
+
+import { HomeHeader } from '@components/Headers/Home';
+import { Filter } from '@components/Filter';
+import { Button } from '@components/Forms/Button';
+import { Order, OrderProps } from '@components/Order';
 
 export const Home: React.FC = () => {
   const { colors } = useTheme();

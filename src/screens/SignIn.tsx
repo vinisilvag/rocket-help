@@ -1,8 +1,8 @@
 import React from 'react';
 import { VStack, Heading } from 'native-base';
 
-import Logo from '../assets/logo-primary.svg';
-import { SignInForm } from '../components/Forms/SignInForm';
+import Logo from '@assets/logo-primary.svg';
+import { SignInForm } from '@components/Forms/Containers/SignInForm';
 
 export const SignIn: React.FC = () => (
   <VStack flex={1} alignItems="center" bg="gray.600" px={8} pt={24}>

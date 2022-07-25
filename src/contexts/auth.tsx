@@ -5,7 +5,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import Toast from 'react-native-toast-message';
 
-import { SignInFormData } from '../components/Forms/SignInForm';
+import { SignInFormData } from '@components/Forms/Containers/SignInForm';
 
 type AuthContextType = {
   user: FirebaseAuthTypes.User | null;

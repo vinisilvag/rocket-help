@@ -2,9 +2,9 @@ import React from 'react';
 import { HStack, IconButton, useTheme } from 'native-base';
 
 import { SignOut } from 'phosphor-react-native';
-import Logo from '../../assets/logo-secondary.svg';
+import Logo from '@assets/logo-secondary.svg';
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 
 export const HomeHeader: React.FC = () => {
   const { colors } = useTheme();

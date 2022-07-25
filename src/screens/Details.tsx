@@ -1,7 +1,9 @@
-import { useRoute } from '@react-navigation/native';
-import { VStack } from 'native-base';
 import React from 'react';
-import { OrderHeader } from '../components/Headers/Order';
+import { VStack } from 'native-base';
+
+import { useRoute } from '@react-navigation/native';
+
+import { OrderHeader } from '@components/Headers/Order';
 
 type RouteParams = {
   orderId: string;

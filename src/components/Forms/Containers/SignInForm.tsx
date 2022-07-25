@@ -7,9 +7,10 @@ import * as yup from 'yup';
 
 import { Envelope, Key } from 'phosphor-react-native';
 
-import { Input } from '../Input';
-import { Button } from '../Button';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
+
+import { Input } from '@components/Forms/Input';
+import { Button } from '@components/Forms/Button';
 
 export type SignInFormData = {
   email: string;
