@@ -44,6 +44,9 @@
     "operator-linebreak": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
-    "react/style-prop-object": "off"
+    "react/style-prop-object": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "camelcase": "off"
   }
 }

@@ -16,7 +16,7 @@ export const Details: React.FC = () => {
   console.log(orderId);
 
   return (
-    <VStack flex={1} bg="gray.700">
+    <VStack flex={1} px={6} bg="gray.600">
       <OrderHeader title="Solicitação" />
     </VStack>
   );
