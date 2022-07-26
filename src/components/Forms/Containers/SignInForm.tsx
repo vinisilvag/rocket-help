@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, Icon, useTheme } from 'native-base';
+import { VStack } from 'native-base';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -29,8 +29,6 @@ const signInFormSchema = yup.object({
 });
 
 export const SignInForm: React.FC = () => {
-  const { colors } = useTheme();
-
   const { signIn } = useAuth();
 
   const {
@@ -58,9 +56,7 @@ export const SignInForm: React.FC = () => {
         autoCorrect={false}
         autoCapitalize="none"
         keyboardType="email-address"
-        InputLeftElement={
-          <Icon as={<Envelope color={colors.gray[300]} />} ml={4} />
-        }
+        leftIcon={Envelope}
       />
       <Input
         control={control}
@@ -68,7 +64,7 @@ export const SignInForm: React.FC = () => {
         placeholder="Senha"
         autoCapitalize="none"
         secureTextEntry
-        InputLeftElement={<Icon as={<Key color={colors.gray[300]} />} ml={4} />}
+        leftIcon={Key}
       />
 
       <Button

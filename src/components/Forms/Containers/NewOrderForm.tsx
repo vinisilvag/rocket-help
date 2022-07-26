@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack } from 'native-base';
+import { ScrollView, VStack } from 'native-base';
 
 import firestore from '@react-native-firebase/firestore';
 
@@ -57,13 +57,13 @@ export const NewOrderForm: React.FC = () => {
         creator_uid: user?.uid,
       })
       .then(() => {
-        reset();
-
         Toast.show({
           type: 'success',
           text1: 'Solicitação',
           text2: 'Solicitação registrada com sucecsso.',
         });
+
+        reset();
 
         navigation.goBack();
       })
@@ -77,25 +77,27 @@ export const NewOrderForm: React.FC = () => {
   };
 
   return (
-    <VStack flex={1} w="full" mt={2} pb={6}>
-      <Input
-        control={control}
-        inputName="patrimony"
-        placeholder="Número do patrimônio"
-      />
-      <Input
-        control={control}
-        inputName="description"
-        placeholder="Descrição do problema"
-        flex={1}
-        multiline
-        textAlignVertical="top"
-      />
+    <VStack flex={1} w="full" pb={5}>
+      <ScrollView flex={1} showsVerticalScrollIndicator={false} pt={2}>
+        <Input
+          control={control}
+          inputName="patrimony"
+          placeholder="Número do patrimônio"
+        />
+        <Input
+          control={control}
+          inputName="description"
+          placeholder="Descrição do problema"
+          h={64}
+          multiline
+          textAlignVertical="top"
+        />
+      </ScrollView>
 
       <Button
         title="Cadastrar"
         w="full"
-        mt={2}
+        mt={5}
         onPress={handleSubmit(handleCreateNewOrder)}
         isLoading={isSubmitting}
       />

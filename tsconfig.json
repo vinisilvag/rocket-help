@@ -12,6 +12,9 @@
       "@contexts/*": [
         "src/contexts/*"
       ],
+      "@DTOs/*": [
+        "src/DTOs/*"
+      ],
       "@hooks/*": [
         "src/hooks/*"
       ],

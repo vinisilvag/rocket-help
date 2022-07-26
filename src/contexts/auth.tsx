@@ -26,11 +26,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = auth().onAuthStateChanged((signedUser) => {
-      if (signedUser) {
-        setUser(signedUser);
-      } else {
-        setUser(null);
-      }
+      if (signedUser) setUser(signedUser);
+      else setUser(null);
 
       setIsLoadingUser(false);
     });

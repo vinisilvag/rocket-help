@@ -7,6 +7,8 @@ import {
   FlatList,
   Center,
   useTheme,
+  Spinner,
+  Box,
 } from 'native-base';
 
 import firestore from '@react-native-firebase/firestore';
@@ -19,7 +21,6 @@ import { HomeHeader } from '@components/Headers/Home';
 import { Filter } from '@components/Filter';
 import { Button } from '@components/Forms/Button';
 import { Order, OrderProps } from '@components/Order';
-import { Loading } from '@components/Loading';
 
 import { dateFormat } from '@utils/firestoreDateFormat';
 
@@ -38,22 +39,27 @@ export const Home: React.FC = () => {
     const unsubscribe = firestore()
       .collection('orders')
       .where('status', '==', statusSelected)
-      .onSnapshot((snapshot) => {
-        const data = snapshot.docs.map((doc) => {
-          const { patrimony, descrption, status, created_at } = doc.data();
+      .onSnapshot(
+        (snapshot) => {
+          const data = snapshot.docs.map((doc) => {
+            const { patrimony, descrption, status, created_at } = doc.data();
 
-          return {
-            id: doc.id,
-            patrimony,
-            descrption,
-            status,
-            when: dateFormat(created_at),
-          };
-        });
+            return {
+              id: doc.id,
+              patrimony,
+              descrption,
+              status,
+              when: dateFormat(created_at),
+            };
+          });
 
-        setOrders(data);
-        setIsLoading(false);
-      });
+          setOrders(data);
+          setIsLoading(false);
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
 
     return unsubscribe;
   }, [statusSelected]);
@@ -101,7 +107,9 @@ export const Home: React.FC = () => {
         </HStack>
 
         {isLoading ? (
-          <Loading />
+          <Box flex={1}>
+            <Spinner size="sm" color="secondary.700" />
+          </Box>
         ) : (
           <FlatList
             data={orders}
@@ -113,7 +121,7 @@ export const Home: React.FC = () => {
               />
             )}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 32 }}
+            contentContainerStyle={{ paddingBottom: 4 }}
             ListEmptyComponent={() => (
               <Center>
                 <ChatTeardropText color={colors.gray[300]} size={36} />
@@ -126,7 +134,11 @@ export const Home: React.FC = () => {
           />
         )}
 
-        <Button title="Nova solicitação" onPress={handleNavigateToNewOrder} />
+        <Button
+          title="Nova solicitação"
+          onPress={handleNavigateToNewOrder}
+          mt={5}
+        />
       </VStack>
     </VStack>
   );
